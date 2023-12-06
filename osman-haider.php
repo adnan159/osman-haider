@@ -87,6 +87,9 @@ if( ! defined( 'ABSPATH' ) ) {
      * @return void
      */
     public function init_plugin() {
+
+        new \Osman\Haider\Assets();
+
         if( is_admin() ) {
             new \Osman\Haider\Admin();
         } else {

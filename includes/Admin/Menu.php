@@ -23,13 +23,15 @@ class Menu {
         $parent_slug = 'osman-haider';
         $capability = 'manage_options';
 
-        add_menu_page( 
+        $hook = add_menu_page( 
             __( 'Osman Haider', 'osman-haider' ), 
             __( 'Osman Haider', 'osman-haider' ), 
             $capability, $parent_slug, 
             [ $this, 'plugin_page' ], 
             'dashicons-admin-site' 
         );
+
+        add_action( 'admin_head-' . $hook, [$this, 'enqueue_assets'] );
     }
 
     /**
@@ -40,4 +42,14 @@ class Menu {
     public function plugin_page() {
         include_once __DIR__ . '/views/osman-haider-view.php';
     }
+
+    /**
+     * Enqueue admin assets
+     *
+     * @return void
+     */
+    public function enqueue_assets() {
+		wp_enqueue_style( 'oh-admin-style' );
+		wp_enqueue_script( 'oh-admin-script' );
+	}
 }
