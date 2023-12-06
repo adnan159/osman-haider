@@ -30,7 +30,7 @@ class Assets {
 	}
 
 	public function get_style() {
-        $mainCssPath = OSMAN_HAIDER_ASSETS . '/admin/css/dashboard.css';
+        $mainCssPath = OSMAN_HAIDER_ASSETS . '/css/admin/dashboard.css';
         if (file_exists($mainCssPath)) {
             $version = filemtime($mainCssPath);
         } else {
@@ -38,7 +38,7 @@ class Assets {
         }
 		return [
 			'oh-admin-style' => [
-				'src'		=> OSMAN_HAIDER_ASSETS . '/admin/css/dashboard.css',
+				'src'		=> OSMAN_HAIDER_ASSETS . '/css/admin/dashboard.css',
 				'version'	=> $version
 			]
 		];
