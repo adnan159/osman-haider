@@ -90,6 +90,10 @@ if( ! defined( 'ABSPATH' ) ) {
 
         new \Osman\Haider\Assets();
 
+        if( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            new Osman\Haider\Ajax();
+        }
+
         if( is_admin() ) {
             new \Osman\Haider\Admin();
         } else {

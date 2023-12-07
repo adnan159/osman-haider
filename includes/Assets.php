@@ -25,7 +25,7 @@ class Assets {
 				'src'			=> OSMAN_HAIDER_ASSETS . '/js/admin/dashboard.js',
 				'version'		=> $version,
 				'dependency'	=> [ 'jquery' ]
-			]
+			],
 		];
 	}
 
