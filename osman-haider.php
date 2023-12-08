@@ -10,20 +10,22 @@
 * License: GPL2
 */
 
-if( ! defined( 'ABSPATH' ) ) {
+use Osman\Haider\Command;
+
+if ( ! defined( 'ABSPATH' ) ) {
     exit;
- }
+}
 
- if( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
     die( 'Please run `composer install` on main plugin directory' );
- }
+}
 
- require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
- /**
-  * The main plugin class
-  */
- final class Osman_Haider {
+/**
+ * The main plugin class
+ */
+final class Osman_Haider {
 
     const VERSION = '1.0';
 
@@ -33,24 +35,9 @@ if( ! defined( 'ABSPATH' ) ) {
     private function __construct() {
         $this->define_constants();
 
-        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+        register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
-        add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
-    }
-
-    /**
-     * Initialize a singleton instance
-     *
-     * @return \Osman_Haider
-     */
-    public static function init() {
-        static $instance = false;
-
-        if( ! $instance ) {
-            $instance = new self();
-        }
-
-        return $instance;
+        add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
     }
 
     /**
@@ -74,7 +61,7 @@ if( ! defined( 'ABSPATH' ) ) {
     public function activate() {
         $installed = get_option( 'osman_haider_installed' );
 
-        if( ! $installed ) {
+        if ( ! $installed ) {
             update_option( 'osman_haider_installed', time() );
         }
 
@@ -85,28 +72,47 @@ if( ! defined( 'ABSPATH' ) ) {
      * Initialize the plugin
      *
      * @return void
+     * @throws \Exception
      */
     public function init_plugin() {
+        new \Osman\Haider\Assets;
 
-        new \Osman\Haider\Assets();
-
-        if( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-            new Osman\Haider\Ajax();
+        if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            new Osman\Haider\Ajax;
         }
 
-        if( is_admin() ) {
-            new \Osman\Haider\Admin();
-        } else {
-            // for frontend
+        if ( is_admin() ) {
+            new \Osman\Haider\Admin;
+        }
+
+        // Register the WP-CLI command
+        if ( ( defined( 'WP_CLI' ) || WP_CLI ) && class_exists( Command::class ) ) { //phpcs:ignore
+            WP_CLI::add_command( 'miusage-cache', Command::class );
         }
     }
- }
 
- /**
-  * Initialize the main plugin
-  *
-  * @return \Osman_Haider
-  */
+    /**
+     * Initialize a singleton instance
+     *
+     * @return \Osman_Haider
+     */
+    public static function init() {
+        static $instance = false;
+
+        if ( ! $instance ) {
+            $instance = new self;
+        }
+
+        return $instance;
+    }
+
+}
+
+/**
+ * Initialize the main plugin
+ *
+ * @return \Osman_Haider
+ */
 function osman_haider() {
     return Osman_Haider::init();
 }
