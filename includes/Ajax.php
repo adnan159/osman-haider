@@ -13,6 +13,8 @@ class Ajax {
     public function __construct() {
         add_action( 'wp_ajax_nopriv_oh_miusage_action', array( $this, 'oh_miusage_action' ) );
         add_action( 'wp_ajax_oh_miusage_action', array( $this, 'oh_miusage_action' ) );
+        add_action('wp_ajax_oh_miusage_action', 'oh_miusage_action');
+        add_action('wp_ajax_nopriv_oh_miusage_action', 'oh_miusage_action');
     }
 
     /**

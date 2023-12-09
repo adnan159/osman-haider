@@ -1,0 +1,24 @@
+
+.oh-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.oh-caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.oh-thead {
+    background-color: #f2f2f2;
+}
+
+.oh-th, .oh-td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.oh-tbody .oh-tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

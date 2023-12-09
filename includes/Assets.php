@@ -62,6 +62,10 @@ class Assets {
 				'src'     => OSMAN_HAIDER_ASSETS . '/css/admin/dashboard.css',
 				'version' => $version,
 			),
+			'oh-block-style' => array(
+				'src'     => OSMAN_HAIDER_ASSETS . '/css/frontend/block-style.css',
+				'version' => $version,
+			),
 		);
 	}
 
@@ -86,16 +90,10 @@ class Assets {
 			wp_register_style( $handle, $style['src'], $dependency, $style['version'] );
 		}
 
-		// wp_localize_script( 'ascode-enquery-script', 'AsCodeUrl', [
-		// 'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-		// 'error'     => __( 'Something went wrong!', 'asscode-addressbook' ),
-		// ] );
-
-		// wp_localize_script( 'ascode-admin-script', 'AsCodeUrl', [
-		// 'nonce'     => wp_create_nonce( 'ascode-admin-nonce' ),
-		// 'confirm'   => __( 'Are you sure?', 'asscode-addressbook' ),
-		// 'error'     => __( 'Something went wrong!', 'asscode-addressbook' ),
-		// ] );
+		wp_localize_script( 'oh-block-script', 'miusageData', [
+		'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+		'error'     => __( 'Something went wrong!', 'asscode-addressbook' ),
+		] );
 	}
 
 }

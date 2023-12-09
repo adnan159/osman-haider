@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
             },
             success: function(response) {
                 let tableData = JSON.parse(response);
-                console.log(tableData);
+                console.log(tableData.data.headers);
 
                 if (tableData.title && tableData.data && tableData.data.headers && tableData.data.rows) {
                 // Assuming you have a table with the class 'oh-table' in your HTML

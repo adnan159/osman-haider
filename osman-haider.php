@@ -81,11 +81,7 @@ final class Osman_Haider {
             new Osman\Haider\Ajax;
         }
 
-        if ( is_admin() ) {
-            new \Osman\Haider\Admin;
-        } else {
-            new \Osman\Haider\Frontend;
-        }
+        new \Osman\Haider\Admin;
 
         new \Osman\Haider\Frontend;
 
