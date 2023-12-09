@@ -4,7 +4,8 @@
     </div>
 
     <div class="oh-content">
-        <div id="oh-table" class="oh-table">
+        <div id="oh-table" class="oh-table">    
+            <div class="oh-table-caption"></div>
             <table class="oh-table">
                 <thead>
                     <tr>

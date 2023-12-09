@@ -45,8 +45,10 @@ registerBlockType('osman-haider/my-block', {
     }
   },
   edit: function (props) {
-    var attributes = props.attributes;
-    var setAttributes = props.setAttributes;
+    const {
+      attributes,
+      setAttributes
+    } = props;
 
     // Function to handle AJAX request and update data in the block
     function fetchData() {
@@ -82,15 +84,13 @@ registerBlockType('osman-haider/my-block', {
       }, el(PanelBody, {
         title: 'Table Settings',
         initialOpen: true
-      }, Object.keys(attributes.showColumns).map(function (column, index) {
-        return el(PanelRow, {
-          key: index
-        }, el(CheckboxControl, {
-          label: `Show ${column} Column`,
-          checked: attributes.showColumns[column],
-          onChange: () => toggleColumnVisibility(column)
-        }));
-      }))), el('div', {
+      }, Object.keys(attributes.showColumns).map((column, index) => el(PanelRow, {
+        key: index
+      }, el(CheckboxControl, {
+        label: `Show ${column} Column`,
+        checked: attributes.showColumns[column],
+        onChange: () => toggleColumnVisibility(column)
+      }))))), el('div', {
         className: 'custom-block-content'
       }, el('table', {
         className: 'oh-table'
@@ -102,33 +102,31 @@ registerBlockType('osman-haider/my-block', {
         className: 'oh-thead'
       }, el('tr', {
         className: 'oh-tr'
-      }, Object.keys(attributes.showColumns).map(function (column, index) {
-        return attributes.showColumns[column] && el('th', {
-          key: index,
-          className: 'oh-th'
-        }, column);
-      }))),
+      }, Object.keys(attributes.showColumns).map((column, index) => attributes.showColumns[column] && el('th', {
+        key: index,
+        className: 'oh-th'
+      }, column)))),
       // Table body
       el('tbody', {
         className: 'oh-tbody'
-      }, Object.keys(attributes.responseData.data.rows).map(function (rowKey) {
-        var row = attributes.responseData.data.rows[rowKey];
+      }, Object.keys(attributes.responseData.data.rows).map(rowKey => {
+        const row = attributes.responseData.data.rows[rowKey];
         return el('tr', {
           key: rowKey,
           className: 'oh-tr'
-        }, Object.keys(attributes.showColumns).map(function (column, index) {
-          return attributes.showColumns[column] && el('td', {
-            key: index,
-            className: 'oh-td'
-          },
-          // Convert date only if the column is 'date'
-          column === 'date' ? new Date(row[column] * 1000).toLocaleDateString() : row[column]);
-        }));
+        }, Object.keys(attributes.showColumns).map((column, index) => attributes.showColumns[column] && el('td', {
+          key: index,
+          className: 'oh-td'
+        },
+        // Convert date only if the column is 'date'
+        column === 'date' ? new Date(row[column] * 1000).toLocaleDateString() : row[column])));
       }))))];
     }
   },
   save: function (props) {
-    var attributes = props.attributes;
+    const {
+      attributes
+    } = props;
     if (attributes.responseData) {
       return el('div', {
         className: 'custom-block-content'
@@ -142,28 +140,24 @@ registerBlockType('osman-haider/my-block', {
         className: 'oh-thead'
       }, el('tr', {
         className: 'oh-tr'
-      }, Object.keys(attributes.showColumns).map(function (column, index) {
-        return attributes.showColumns[column] && el('th', {
-          key: index,
-          className: 'oh-th'
-        }, column);
-      }))),
+      }, Object.keys(attributes.showColumns).map((column, index) => attributes.showColumns[column] && el('th', {
+        key: index,
+        className: 'oh-th'
+      }, column)))),
       // Table body
       el('tbody', {
         className: 'oh-tbody'
-      }, Object.keys(attributes.responseData.data.rows).map(function (rowKey) {
-        var row = attributes.responseData.data.rows[rowKey];
+      }, Object.keys(attributes.responseData.data.rows).map(rowKey => {
+        const row = attributes.responseData.data.rows[rowKey];
         return el('tr', {
           key: rowKey,
           className: 'oh-tr'
-        }, Object.keys(attributes.showColumns).map(function (column, index) {
-          return attributes.showColumns[column] && el('td', {
-            key: index,
-            className: 'oh-td'
-          },
-          // Convert date only if the column is 'date'
-          column === 'date' ? new Date(row[column] * 1000).toLocaleDateString() : row[column]);
-        }));
+        }, Object.keys(attributes.showColumns).map((column, index) => attributes.showColumns[column] && el('td', {
+          key: index,
+          className: 'oh-td'
+        },
+        // Convert date only if the column is 'date'
+        column === 'date' ? new Date(row[column] * 1000).toLocaleDateString() : row[column])));
       }))));
     }
 
