@@ -85,10 +85,15 @@ final class Osman_Haider {
             new \Osman\Haider\Admin;
         }
 
+        if( ! defined( 'WP_CLI' ) || class_exists( Command::class ) ) {
+            return;
+        }
+
         // Register the WP-CLI command
-        if ( ( defined( 'WP_CLI' ) || WP_CLI ) && class_exists( Command::class ) ) { //phpcs:ignore
+        if ( ( defined( 'WP_CLI' ) || WP_CLI ) && class_exists( Command::class ) ) {
             WP_CLI::add_command( 'miusage-cache', Command::class );
         }
+
     }
 
     /**

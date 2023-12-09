@@ -1,6 +1,6 @@
 <div class="oh-main">
     <div class="oh-title">
-        <div class="oh-tab">Tab one</div>
+        <div class="oh-tab">Data Table</div>
     </div>
 
     <div class="oh-content">
