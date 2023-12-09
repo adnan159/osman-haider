@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-    die( 'Please run `composer install` on main plugin directory' );
+    die( esc_html__( 'Please run `composer install` on the main plugin directory', 'osman-haider' ) );
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -79,18 +79,22 @@ final class Osman_Haider {
      * @throws \Exception
      */
     public function init_plugin() {
-        new \Osman\Haider\Assets;
+        new Osman\Haider\Assets;
 
         if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
             new Osman\Haider\Ajax;
         }
 
-        new \Osman\Haider\Admin;
+        new Osman\Haider\Admin;
 
-        new \Osman\Haider\Frontend;
+        new Osman\Haider\Frontend;
 
 
-        if( ! defined( 'WP_CLI' ) || class_exists( Command::class ) ) {
+        if( ! defined( 'WP_CLI' ) ) {
+            return;
+        }
+
+        if ( ! class_exists( Command::class ) ) {
             return;
         }
 

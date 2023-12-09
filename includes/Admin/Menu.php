@@ -11,7 +11,8 @@ class Menu {
      * Class constructor
      */
     public function __construct() {
-        add_action( 'admin_menu', [ $this, 'admin_menu' ] );
+        add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
     }
 
     /**
@@ -19,19 +20,20 @@ class Menu {
      *
      * @return void
      */
-    public function admin_menu() {
+    public function register_admin_menu() {
         $parent_slug = 'osman-haider';
         $capability = 'manage_options';
 
         $hook = add_menu_page( 
             __( 'Osman Haider', 'osman-haider' ), 
             __( 'Osman Haider', 'osman-haider' ), 
-            $capability, $parent_slug, 
-            [ $this, 'plugin_page' ], 
+            $capability, 
+            $parent_slug, 
+            [ $this, 'render_plugin_page' ], 
             'dashicons-admin-site' 
         );
 
-        add_action( 'admin_head-' . $hook, [$this, 'enqueue_assets'] );
+        add_action( 'admin_head-' . $hook, [ $this, 'enqueue_assets' ] );
     }
 
     /**
@@ -39,7 +41,7 @@ class Menu {
      *
      * @return void
      */
-    public function plugin_page() {
+    public function render_plugin_page() {
         include_once __DIR__ . '/views/osman-haider-view.php';
     }
 
@@ -49,7 +51,7 @@ class Menu {
      * @return void
      */
     public function enqueue_assets() {
-		wp_enqueue_style( 'oh-admin-style' );
-		wp_enqueue_script( 'oh-admin-script' );
-	}
+        wp_enqueue_style( 'oh-admin-style' );
+        wp_enqueue_script( 'oh-admin-script' );
+    }
 }
