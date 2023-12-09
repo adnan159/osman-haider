@@ -1,0 +1,5 @@
+# Folders to ignore
+vendor
+osman-haider/vendor/
+osman-hiader/assets/js/frontend/build
+node_modules

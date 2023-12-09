@@ -36,13 +36,13 @@ class Assets {
 				'dependency' => array( 'jquery' ),
 			),
 			'oh-block-script' => array(
-				'src'        => OSMAN_HAIDER_ASSETS . '/js/frontend/miusage_block.js',
+				'src'        => OSMAN_HAIDER_ASSETS . '/js/frontend/build/miusage/index.js',
 				'version'    => $version,
-				'dependency' => array( 'jquery' ),
+				'dependency' => array('wp-blocks', 'wp-element', 'wp-editor'),
 			),
 		);
 	}
-
+	
     /**
      * Get all the styles
      *

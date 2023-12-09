@@ -87,6 +87,9 @@ final class Osman_Haider {
             new \Osman\Haider\Frontend;
         }
 
+        new \Osman\Haider\Frontend;
+
+
         if( ! defined( 'WP_CLI' ) || class_exists( Command::class ) ) {
             return;
         }

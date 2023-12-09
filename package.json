@@ -1,0 +1,15 @@
+{
+  "name": "osman-haider",
+  "version": "1.0.0",
+  "description": "A packege for AwesomeMotive assignment",
+  "main": "index.js",
+  "scripts": {
+    "start": "wp-scripts start assets/js/frontend/src/miusage/index.js --output-path=assets/js/frontend/build/miusage",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Osman Haider",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^26.18.0"
+  }
+}
