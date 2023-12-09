@@ -83,6 +83,8 @@ final class Osman_Haider {
 
         if ( is_admin() ) {
             new \Osman\Haider\Admin;
+        } else {
+            new \Osman\Haider\Frontend;
         }
 
         if( ! defined( 'WP_CLI' ) || class_exists( Command::class ) ) {

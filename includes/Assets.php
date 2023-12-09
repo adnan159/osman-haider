@@ -35,6 +35,11 @@ class Assets {
 				'version'    => $version,
 				'dependency' => array( 'jquery' ),
 			),
+			'oh-block-script' => array(
+				'src'        => OSMAN_HAIDER_ASSETS . '/js/frontend/miusage_block.js',
+				'version'    => $version,
+				'dependency' => array( 'jquery' ),
+			),
 		);
 	}
 
