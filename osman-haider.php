@@ -1,13 +1,17 @@
 <?php
 
 /*
-* Plugin Name: Osman Haider
-* Plugin URI: http://osmanhaider.com
-* Description: This is a plugin for Osman Haider
-* Version: 1.0
-* Author: Osman Haider
-* Author URI: http://osmanhaider.com
-* License: GPL2
+* Plugin Name:  Osman Haider
+* Plugin URI:   http://wordpress.osmanhiaderadnan.com
+* Description:  This is a plugin for Awesome Motive Assignment
+* Version:      1.0
+* Author:       Osman Haider
+* Author URI:   http://wordpress.osmanhiaderadnan.com
+* License:      GPL2
+* License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+* Text Domain:  osman-haider
+* Domain Path:  /languages
+* Requires PHP: 7.0 or higher
 */
 
 use Osman\Haider\Command;

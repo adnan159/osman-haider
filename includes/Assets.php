@@ -21,23 +21,16 @@ class Assets {
      * @return array
      */
 	public function get_script() {
-        $main_js_path = OSMAN_HAIDER_ASSETS . '/js/admin/dashboard.js';
-
-        if ( file_exists( $main_js_path ) ) {
-            $version = filemtime( $main_js_path );
-        } else {
-            $version = '1.0.0';
-        }
 
 		return array(
 			'oh-admin-script' => array(
 				'src'        => OSMAN_HAIDER_ASSETS . '/js/admin/dashboard.js',
-				'version'    => $version,
+				'version'    => '1.0.0',
 				'dependency' => array( 'jquery' ),
 			),
 			'oh-block-script' => array(
 				'src'        => OSMAN_HAIDER_ASSETS . '/js/frontend/build/miusage/index.js',
-				'version'    => $version,
+				'version'    => '1.0.0',
 				'dependency' => array('wp-blocks', 'wp-element', 'wp-editor'),
 			),
 		);
@@ -49,22 +42,15 @@ class Assets {
      * @return array
      */
 	public function get_style() {
-        $main_css_path = OSMAN_HAIDER_ASSETS . '/css/admin/dashboard.css';
-
-        if ( file_exists( $main_css_path ) ) {
-            $version = filemtime( $main_css_path );
-        } else {
-            $version = '1.0.0';
-        }
 
 		return array(
 			'oh-admin-style' => array(
 				'src'     => OSMAN_HAIDER_ASSETS . '/css/admin/dashboard.css',
-				'version' => $version,
+				'version' => '1.0.0',
 			),
 			'oh-block-style' => array(
 				'src'     => OSMAN_HAIDER_ASSETS . '/css/frontend/block-style.css',
-				'version' => $version,
+				'version' => '1.0.0',
 			),
 		);
 	}
@@ -91,8 +77,7 @@ class Assets {
 		}
 
 		wp_localize_script( 'oh-block-script', 'miusageData', [
-		'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-		'error'     => __( 'Something went wrong!', 'asscode-addressbook' ),
+			'ajaxurl'   => admin_url( 'admin-ajax.php' ),
 		] );
 	}
 
