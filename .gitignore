@@ -1,5 +1,6 @@
 # Folders to ignore
-vendor
-osman-haider/vendor/
-osman-hiader/assets/js/frontend/build
-node_modules
+/vendor/
+/node_modules/
+assets/js/frontend/build/
+composer.lock
+package-lock.json
