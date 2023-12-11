@@ -14,5 +14,11 @@ Follow these instructions to set up the project on your local machine for develo
 
 1. **Clone the repository**
     -https://github.com/adnan159/osman-haider/
-2.
-
+2. **Install PHP dependencies**
+   - composer install
+3. **Install JS dependencies**
+   - npm install
+4. **To bulid JS file**
+    - npm start
+5. **To remove cahce data**
+   - wp miusage-cache refresh
