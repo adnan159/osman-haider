@@ -14,7 +14,7 @@ use WP_CLI_Command;
 /**
  * Manage the AJAX endpoint.
  */
-class AjaxManager extends WP_CLI_Command {
+class Command extends WP_CLI_Command {
 
     /**
      * Force refresh of the data for the AJAX endpoint.

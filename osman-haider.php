@@ -89,20 +89,20 @@ final class Osman_Haider {
 
         new Osman\Haider\Frontend;
 
-
-        if( ! defined( 'WP_CLI' ) ) {
+		if ( ! defined( 'WP_CLI' ) ) {
             return;
-        }
+		}
 
-        if ( ! class_exists( Command::class ) ) {
+		if ( ! class_exists( Command::class ) ) {
             return;
-        }
+		}
 
         // Register the WP-CLI command
-        if ( ( defined( 'WP_CLI' ) || WP_CLI ) && class_exists( Command::class ) ) {
-            WP_CLI::add_command( 'miusage-cache', Command::class );
+        if ( ( !defined( 'WP_CLI' ) && !WP_CLI ) || !class_exists( Command::class ) ) {
+            return;
         }
 
+        WP_CLI::add_command( 'miusage-cache', Command::class );
     }
 
     /**
