@@ -124,7 +124,7 @@ final class Osman_Haider {
 
 /**
  * Initialize the main plugin
- *
+ * @params none
  * @return \Osman_Haider
  */
 function osman_haider() {
