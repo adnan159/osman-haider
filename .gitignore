@@ -1,5 +1,4 @@
 # Folders to ignore
-/vendor/
 /node_modules/
 assets/js/frontend/build/
 composer.lock
